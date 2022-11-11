@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "823513924260",
+    "project_id": "mynotes-flutter-faisalismail",
+    "storage_bucket": "mynotes-flutter-faisalismail.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823513924260:android:382cc2c6a0756662ee5c31",
+        "android_client_info": {
+          "package_name": "com.example.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823513924260-i29ubd6prul82fo1vjbd2n4kf2kfjfpi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUdpF1hJr764G6-4OEF22upVGH7mzdhIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823513924260-i29ubd6prul82fo1vjbd2n4kf2kfjfpi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "823513924260-ps4gv80gq2ndqha1hvr27s60b22dm9r5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mynotes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
