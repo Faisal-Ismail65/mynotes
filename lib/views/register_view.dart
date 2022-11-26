@@ -1,6 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:developer' as devtools show log;
+
+import 'package:mynotes/constants/routes.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -78,6 +82,8 @@ class _RegisterViewState extends State<RegisterView> {
                         .createUserWithEmailAndPassword(
                             email: email, password: password);
                     devtools.log(userCredential.toString());
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil(notesRoute, (route) => false);
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'weak-password') {
                       devtools.log('Weak Password...');
@@ -93,7 +99,7 @@ class _RegisterViewState extends State<RegisterView> {
               ElevatedButton(
                   onPressed: () {
                     Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/login/', (route) => false);
+                        .pushNamedAndRemoveUntil(loginRoute, (route) => false);
                   },
                   child: const Text('Login')),
             ],
