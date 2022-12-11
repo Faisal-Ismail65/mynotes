@@ -74,7 +74,7 @@ class _RegisterViewState extends State<RegisterView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                onPressed: (() async {
+                onPressed: () async {
                   final email = _email.text;
                   final password = _password.text;
                   try {
@@ -82,7 +82,7 @@ class _RegisterViewState extends State<RegisterView> {
                       email: email,
                       password: password,
                     );
-                    AuthService.firebase().sendEmailVerification();
+                    await AuthService.firebase().sendEmailVerification();
                     Navigator.of(context)
                         .pushNamedAndRemoveUntil(notesRoute, (route) => false);
                   } on WeakPasswordAuthException {
@@ -106,7 +106,7 @@ class _RegisterViewState extends State<RegisterView> {
                       "Failed to Register",
                     );
                   }
-                }),
+                },
                 child: const Text('Register'),
               ),
               ElevatedButton(

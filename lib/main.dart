@@ -1,8 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:developer';
-
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mynotes/constants/routes.dart';
@@ -84,6 +81,55 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Testing Bloc'),
+        ),
+        body: BlocConsumer<CounterBloc, CounterState>(
+          listener: (context, state) {
+            _controller.clear();
+          },
+          builder: (context, state) {
+            final invalidValue =
+                (state is CounterStateInvalidNumber) ? state.invalidValue : '';
+            return Column(
+              children: [
+                Text('Current Value => ${state.value}'),
+                Visibility(
+                  visible: state is CounterStateInvalidNumber,
+                  child: Text('Invalid Input : $invalidValue'),
+                ),
+                TextField(
+                  controller: _controller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Enter Numbers',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<CounterBloc>().add(
+                              DecrementEvent(_controller.text),
+                            );
+                      },
+                      child: const Text('_'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<CounterBloc>().add(
+                              IncrementEvent(_controller.text),
+                            );
+                      },
+                      child: const Text('+'),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
